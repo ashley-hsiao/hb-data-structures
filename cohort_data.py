@@ -19,12 +19,12 @@ def unique_houses(filename):
                                                                                                                                                        
     for line in cohort_data:
         line = line.rstrip()
-        member = line.split("|")
+        member = line.split("|") 
         
-        if member[2] != "":
+        if member[2] != "": # if not equal to "" means the member does not belong to any house so we do not add them. 
             houses_list.append(member[2])
 
-    filename.close()
+    cohort_data.close()
 
     houses = set(houses_list)
 
@@ -48,6 +48,35 @@ def sort_by_cohort(filename):
     tas = []
 
     # Code goes here
+
+    cohort_data = open(filename)
+                                                                                                                                                       
+    for line in cohort_data:
+        line = line.rstrip()
+        member = line.split("|")
+        member_full_name = member[0] + " " + member[1]
+
+        if member[4] == "Winter 2015":
+            winter_15.append(member_full_name)
+
+        elif member[4] == "Spring 2015":
+            spring_15.append(member_full_name)
+
+        elif member[4] == "Summer 2015":
+            summer_15.append(member_full_name)
+
+        elif member[4] == "TA":
+            tas.append(member_full_name)
+
+    cohort_data.close()
+
+    winter_15.sort()
+    spring_15.sort()
+    summer_15.sort()
+    tas.sort()
+
+    # the original list will extend with the new items
+    all_students.extend([winter_15, spring_15, summer_15, tas])
 
     return all_students
 

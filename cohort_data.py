@@ -78,7 +78,7 @@ def sort_by_cohort(filename):
     # the original list will extend with the new items
     all_students.extend([winter_15, spring_15, summer_15, tas])
 
-    return all_students
+    return all_students # is a list of lists 
 
 
 def students_by_house(filename):

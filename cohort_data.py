@@ -13,20 +13,18 @@ def unique_houses(filename):
             ])
 
     """
-    houses_list = []   
+    houses = set()  
 
     cohort_data = open(filename)
                                                                                                                                                        
     for line in cohort_data:
         line = line.rstrip()
-        member = line.split("|") 
+        member = line.split("|")    
         
         if member[2] != "": # if not equal to "" means the member does not belong to any house so we do not add them. 
-            houses_list.append(member[2])
+            houses.add(member[2])
 
     cohort_data.close()
-
-    houses = set(houses_list)
 
     return houses
 
